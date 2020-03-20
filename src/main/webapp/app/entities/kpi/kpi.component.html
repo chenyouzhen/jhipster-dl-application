@@ -1,0 +1,71 @@
+<div>
+    <h2 id="page-heading">
+        <span>Kpis</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-kpi" [routerLink]="['/kpi/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span>
+            Create a new Kpi
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="kpis?.length === 0">
+        <span>No kpis found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="kpis?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span>ID</span></th>
+                    <th scope="col" ><span>Result Time</span></th>
+                    <th scope="col" ><span>Type</span></th>
+                    <th scope="col" ><span>Value</span></th>
+                    <th scope="col" ><span>Factory</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let kpi of kpis ;trackBy: trackId">
+                    <td><a [routerLink]="['/kpi', kpi.id, 'view']">{{ kpi.id }}</a></td>
+                    <td>{{ kpi.resultTime | date:'medium' }}</td>
+                    <td>{{ kpi.type }}</td>
+                    <td>{{ kpi.value }}</td>
+                    <td>
+                        <div *ngIf="kpi.factoryId">
+                            <a [routerLink]="['/factory', kpi.factoryId , 'view']" >{{ kpi.factoryName }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/kpi', kpi.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/kpi', kpi.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(kpi)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,85 @@
+{
+    "name": "Product",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "category",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "model",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "productStock",
+            "otherEntityRelationshipName": "productId",
+            "relationshipName": "id",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "bomEntry",
+            "otherEntityRelationshipName": "productId",
+            "relationshipName": "id"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "demand",
+            "otherEntityRelationshipName": "productId",
+            "relationshipName": "id"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "assemblyLine",
+            "otherEntityRelationshipName": "product",
+            "relationshipName": "assemblyline"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "record",
+            "otherEntityRelationshipName": "product",
+            "relationshipName": "record"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "factory",
+            "otherEntityRelationshipName": "product",
+            "relationshipName": "factory",
+            "otherEntityField": "name"
+        }
+    ],
+    "changelogDate": "20200320030300",
+    "entityTableName": "product",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

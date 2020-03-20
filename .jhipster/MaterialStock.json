@@ -1,0 +1,36 @@
+{
+    "name": "MaterialStock",
+    "fields": [
+        {
+            "fieldName": "quantity",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "unit",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "material",
+            "otherEntityRelationshipName": "id",
+            "relationshipName": "materialId",
+            "ownerSide": false
+        }
+    ],
+    "changelogDate": "20200320030700",
+    "entityTableName": "material_stock",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

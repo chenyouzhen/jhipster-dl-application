@@ -14,6 +14,30 @@
     <property name="uuidType" value="uuid" dbms="h2, oracle"/>
 
     <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200320025400_added_entity_Factory.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200320025500_added_entity_AssemblyLine.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200320025600_added_entity_Observation.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200320025700_added_entity_Alarm.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200320025800_added_entity_Kpi.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200320025900_added_entity_Record.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200320030000_added_entity_Logistics.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200320030100_added_entity_Demand.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200320030200_added_entity_Order.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200320030300_added_entity_Product.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200320030400_added_entity_BomEntry.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200320030500_added_entity_Material.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200320030600_added_entity_ProductStock.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200320030700_added_entity_MaterialStock.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20200320025500_added_entity_constraints_AssemblyLine.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200320025600_added_entity_constraints_Observation.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200320025700_added_entity_constraints_Alarm.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200320025800_added_entity_constraints_Kpi.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200320025900_added_entity_constraints_Record.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200320030100_added_entity_constraints_Demand.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200320030200_added_entity_constraints_Order.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200320030300_added_entity_constraints_Product.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200320030400_added_entity_constraints_BomEntry.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200320030500_added_entity_constraints_Material.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

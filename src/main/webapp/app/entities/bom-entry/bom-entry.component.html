@@ -1,0 +1,75 @@
+<div>
+    <h2 id="page-heading">
+        <span>Bom Entries</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-bom-entry" [routerLink]="['/bom-entry/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span>
+            Create a new Bom Entry
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="bomEntries?.length === 0">
+        <span>No bomEntries found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="bomEntries?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span>ID</span></th>
+                    <th scope="col" ><span>Material</span></th>
+                    <th scope="col" ><span>Amount</span></th>
+                    <th scope="col" ><span>Id</span></th>
+                    <th scope="col" ><span>Product Id</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let bomEntry of bomEntries ;trackBy: trackId">
+                    <td><a [routerLink]="['/bom-entry', bomEntry.id, 'view']">{{ bomEntry.id }}</a></td>
+                    <td>{{ bomEntry.material }}</td>
+                    <td>{{ bomEntry.amount }}</td>
+                    <td>
+                        <div *ngIf="bomEntry.idId">
+                            <a [routerLink]="['/material', bomEntry.idId , 'view']" >{{ bomEntry.idId }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="bomEntry.productIdId">
+                            <a [routerLink]="['/product', bomEntry.productIdId , 'view']" >{{ bomEntry.productIdId }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/bom-entry', bomEntry.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/bom-entry', bomEntry.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(bomEntry)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

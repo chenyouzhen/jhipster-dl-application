@@ -1,0 +1,187 @@
+/*
+工厂信息:正常，停产
+*/
+entity Factory {
+	name String required,
+    description String,
+    scale String,
+    location String required 
+}
+
+/*
+流水线type:N95,医用外科，普通医用
+流水线productCategory:口罩，防护服，消毒
+*/
+entity AssemblyLine {
+	name String required,
+    description String, 
+    capacity Long required,
+    planCapacity Long required,
+    deviceId String required
+}
+
+/*
+property:计件数，电流
+*/
+entity Observation {
+	phenomenonTime ZonedDateTime required,
+    result String required,
+    resultTime ZonedDateTime required,
+    property String,
+    unit String
+}
+
+/*
+Alarm:报警级别，状态
+*/
+entity Alarm {
+	name String,
+    result String required,
+    cause String,
+    resultTime ZonedDateTime required,
+    level String,
+    status String required,
+    resolveTime ZonedDateTime,
+    sourceType String required,
+    sourceId String required,
+    details String   
+}
+
+/*
+KPI type:日产量，日均产量，计划完成率，累计产量，产能，计划量
+*/
+entity Kpi {
+    resultTime ZonedDateTime required,
+    type String required
+    value String required
+}
+
+/*
+Record:日产量，日均产量，计划完成率，累计产量
+*/
+entity Record {
+    dailyOutput Long,
+    resultTime ZonedDateTime required
+}
+
+entity Logistics {
+	logisticsId String required,
+    expressCompany String,
+    expressNumber String,
+    status String required,
+    startPosition String,
+    endPosition String,
+    currentPosition String
+}
+
+entity Demand {
+	demandId String required,	
+    quantity Long required
+}
+
+/*
+content:[
+{
+productCategory:
+productType:
+ammounts:
+}
+]
+*/
+entity Order {
+	orderId String required,
+    customer String required,
+    beginTime ZonedDateTime required,
+    deadLine ZonedDateTime required,
+    status String required,
+    details String
+}
+
+entity Product {
+    name String required,
+	category String required,
+    model String required,
+    description String required
+}
+
+entity BomEntry {
+	material Long required,
+    amount Double required
+}
+
+entity Material {
+    name String required,
+    unit String required,
+    description String
+}
+
+entity ProductStock {
+    quantity Long required,
+    unit String
+}
+
+entity MaterialStock {
+    quantity Long required,
+    unit String
+}
+
+// defining multiple OneToMany relationships with comments
+relationship OneToOne {
+	Material{id} to MaterialStock{materialId},
+	Product{id} to ProductStock{productId},
+} 
+
+
+relationship OneToMany {
+    Product{id} to BomEntry{productId} 
+}
+
+relationship OneToOne {
+    BomEntry{id} to Material{bomEntryId} 
+} 
+
+relationship OneToMany {
+	Product{id} to Demand{productId} 
+}
+
+relationship OneToOne {
+	Order{Id} to Logistics{orderId} 
+}
+
+relationship OneToMany {
+	Order{demand(name)} to Demand{order(name)} 
+}
+
+relationship OneToMany {
+	Factory{product(name)} to Product{factory(name)} 
+}
+
+relationship OneToMany {
+	Factory{order(name)} to Order{factory(name)} 
+}
+
+relationship OneToMany {
+    Product{assemblyline(name)} to AssemblyLine{product(name) required} 
+}
+
+relationship OneToMany {
+    Factory{kpi(name)} to Kpi{factory(name) required} 
+}
+
+relationship OneToMany {
+    AssemblyLine{observation(name)} to Observation{assemblyline(name) required}
+}
+
+relationship OneToMany {
+	Factory{alarm(name)} to Alarm{factory(name)} 
+}
+
+relationship OneToMany {
+    Product{record(name)} to Record{product(name) required}
+}
+
+
+
+paginate Factory with pagination
+service all with serviceImpl
+dto * with mapstruct

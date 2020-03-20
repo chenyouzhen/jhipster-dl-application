@@ -1,0 +1,59 @@
+{
+    "name": "Logistics",
+    "fields": [
+        {
+            "fieldName": "logisticsId",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "expressCompany",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "expressNumber",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "startPosition",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "endPosition",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "currentPosition",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "order",
+            "otherEntityRelationshipName": "id",
+            "relationshipName": "orderId",
+            "ownerSide": false
+        }
+    ],
+    "changelogDate": "20200320030000",
+    "entityTableName": "logistics",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

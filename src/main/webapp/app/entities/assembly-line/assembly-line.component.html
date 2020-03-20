@@ -1,0 +1,75 @@
+<div>
+    <h2 id="page-heading">
+        <span>Assembly Lines</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-assembly-line" [routerLink]="['/assembly-line/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span>
+            Create a new Assembly Line
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="assemblyLines?.length === 0">
+        <span>No assemblyLines found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="assemblyLines?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span>ID</span></th>
+                    <th scope="col" ><span>Name</span></th>
+                    <th scope="col" ><span>Description</span></th>
+                    <th scope="col" ><span>Capacity</span></th>
+                    <th scope="col" ><span>Plan Capacity</span></th>
+                    <th scope="col" ><span>Device Id</span></th>
+                    <th scope="col" ><span>Product</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let assemblyLine of assemblyLines ;trackBy: trackId">
+                    <td><a [routerLink]="['/assembly-line', assemblyLine.id, 'view']">{{ assemblyLine.id }}</a></td>
+                    <td>{{ assemblyLine.name }}</td>
+                    <td>{{ assemblyLine.description }}</td>
+                    <td>{{ assemblyLine.capacity }}</td>
+                    <td>{{ assemblyLine.planCapacity }}</td>
+                    <td>{{ assemblyLine.deviceId }}</td>
+                    <td>
+                        <div *ngIf="assemblyLine.productId">
+                            <a [routerLink]="['/product', assemblyLine.productId , 'view']" >{{ assemblyLine.productName }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/assembly-line', assemblyLine.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/assembly-line', assemblyLine.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(assemblyLine)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
