@@ -1,0 +1,72 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="alarm">
+            <h2><span>Alarm</span> {{ alarm.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Name</span></dt>
+                <dd>
+                    <span>{{ alarm.name }}</span>
+                </dd>
+                <dt><span>Result</span></dt>
+                <dd>
+                    <span>{{ alarm.result }}</span>
+                </dd>
+                <dt><span>Cause</span></dt>
+                <dd>
+                    <span>{{ alarm.cause }}</span>
+                </dd>
+                <dt><span>Result Time</span></dt>
+                <dd>
+                    <span>{{ alarm.resultTime }}</span>
+                </dd>
+                <dt><span>Level</span></dt>
+                <dd>
+                    <span>{{ alarm.level }}</span>
+                </dd>
+                <dt><span>Status</span></dt>
+                <dd>
+                    <span>{{ alarm.status }}</span>
+                </dd>
+                <dt><span>Resolve Time</span></dt>
+                <dd>
+                    <span>{{ alarm.resolveTime }}</span>
+                </dd>
+                <dt><span>Source Type</span></dt>
+                <dd>
+                    <span>{{ alarm.sourceType }}</span>
+                </dd>
+                <dt><span>Source Id</span></dt>
+                <dd>
+                    <span>{{ alarm.sourceId }}</span>
+                </dd>
+                <dt><span>Details</span></dt>
+                <dd>
+                    <span>{{ alarm.details }}</span>
+                </dd>
+                <dt><span>Factory</span></dt>
+                <dd>
+                    <div *ngIf="alarm.factoryId">
+                        <a [routerLink]="['/factory', alarm.factoryId, 'view']">{{ alarm.factoryName }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/alarm', alarm.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

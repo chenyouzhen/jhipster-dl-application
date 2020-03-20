@@ -1,0 +1,44 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="kpi">
+            <h2><span>Kpi</span> {{ kpi.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Result Time</span></dt>
+                <dd>
+                    <span>{{ kpi.resultTime }}</span>
+                </dd>
+                <dt><span>Type</span></dt>
+                <dd>
+                    <span>{{ kpi.type }}</span>
+                </dd>
+                <dt><span>Value</span></dt>
+                <dd>
+                    <span>{{ kpi.value }}</span>
+                </dd>
+                <dt><span>Factory</span></dt>
+                <dd>
+                    <div *ngIf="kpi.factoryId">
+                        <a [routerLink]="['/factory', kpi.factoryId, 'view']">{{ kpi.factoryName }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/kpi', kpi.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

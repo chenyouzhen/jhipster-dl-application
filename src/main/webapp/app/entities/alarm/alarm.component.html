@@ -1,0 +1,85 @@
+<div>
+    <h2 id="page-heading">
+        <span>Alarms</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-alarm" [routerLink]="['/alarm/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span>
+            Create a new Alarm
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="alarms?.length === 0">
+        <span>No alarms found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="alarms?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span>ID</span></th>
+                    <th scope="col" ><span>Name</span></th>
+                    <th scope="col" ><span>Result</span></th>
+                    <th scope="col" ><span>Cause</span></th>
+                    <th scope="col" ><span>Result Time</span></th>
+                    <th scope="col" ><span>Level</span></th>
+                    <th scope="col" ><span>Status</span></th>
+                    <th scope="col" ><span>Resolve Time</span></th>
+                    <th scope="col" ><span>Source Type</span></th>
+                    <th scope="col" ><span>Source Id</span></th>
+                    <th scope="col" ><span>Details</span></th>
+                    <th scope="col" ><span>Factory</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let alarm of alarms ;trackBy: trackId">
+                    <td><a [routerLink]="['/alarm', alarm.id, 'view']">{{ alarm.id }}</a></td>
+                    <td>{{ alarm.name }}</td>
+                    <td>{{ alarm.result }}</td>
+                    <td>{{ alarm.cause }}</td>
+                    <td>{{ alarm.resultTime | date:'medium' }}</td>
+                    <td>{{ alarm.level }}</td>
+                    <td>{{ alarm.status }}</td>
+                    <td>{{ alarm.resolveTime | date:'medium' }}</td>
+                    <td>{{ alarm.sourceType }}</td>
+                    <td>{{ alarm.sourceId }}</td>
+                    <td>{{ alarm.details }}</td>
+                    <td>
+                        <div *ngIf="alarm.factoryId">
+                            <a [routerLink]="['/factory', alarm.factoryId , 'view']" >{{ alarm.factoryName }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/alarm', alarm.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/alarm', alarm.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(alarm)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

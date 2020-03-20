@@ -1,0 +1,46 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="bomEntry">
+            <h2><span>Bom Entry</span> {{ bomEntry.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Material</span></dt>
+                <dd>
+                    <span>{{ bomEntry.material }}</span>
+                </dd>
+                <dt><span>Amount</span></dt>
+                <dd>
+                    <span>{{ bomEntry.amount }}</span>
+                </dd>
+                <dt><span>Id</span></dt>
+                <dd>
+                    <div *ngIf="bomEntry.idId">
+                        <a [routerLink]="['/material', bomEntry.idId, 'view']">{{ bomEntry.idId }}</a>
+                    </div>
+                </dd>
+                <dt><span>Product Id</span></dt>
+                <dd>
+                    <div *ngIf="bomEntry.productIdId">
+                        <a [routerLink]="['/product', bomEntry.productIdId, 'view']">{{ bomEntry.productIdId }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/bom-entry', bomEntry.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

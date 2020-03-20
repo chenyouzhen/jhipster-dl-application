@@ -1,0 +1,47 @@
+{
+    "name": "Kpi",
+    "fields": [
+        {
+            "fieldName": "resultTime",
+            "fieldType": "ZonedDateTime",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "type",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "value",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "factory",
+            "otherEntityRelationshipName": "kpi",
+            "relationshipValidateRules": "required",
+            "relationshipName": "factory",
+            "otherEntityField": "name"
+        }
+    ],
+    "changelogDate": "20200320025800",
+    "entityTableName": "kpi",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

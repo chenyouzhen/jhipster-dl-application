@@ -1,0 +1,46 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="demand">
+            <h2><span>Demand</span> {{ demand.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Demand Id</span></dt>
+                <dd>
+                    <span>{{ demand.demandId }}</span>
+                </dd>
+                <dt><span>Quantity</span></dt>
+                <dd>
+                    <span>{{ demand.quantity }}</span>
+                </dd>
+                <dt><span>Product Id</span></dt>
+                <dd>
+                    <div *ngIf="demand.productIdId">
+                        <a [routerLink]="['/product', demand.productIdId, 'view']">{{ demand.productIdId }}</a>
+                    </div>
+                </dd>
+                <dt><span>Order</span></dt>
+                <dd>
+                    <div *ngIf="demand.orderId">
+                        <a [routerLink]="['/order', demand.orderId, 'view']">{{ demand.orderName }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/demand', demand.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

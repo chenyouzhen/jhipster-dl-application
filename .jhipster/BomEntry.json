@@ -1,0 +1,47 @@
+{
+    "name": "BomEntry",
+    "fields": [
+        {
+            "fieldName": "material",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "amount",
+            "fieldType": "Double",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "material",
+            "otherEntityRelationshipName": "bomEntryId",
+            "relationshipName": "id",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "product",
+            "otherEntityRelationshipName": "id",
+            "relationshipName": "productId",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200320030400",
+    "entityTableName": "bom_entry",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

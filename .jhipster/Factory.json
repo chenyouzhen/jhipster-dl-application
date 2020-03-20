@@ -1,0 +1,64 @@
+{
+    "name": "Factory",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "scale",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "location",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "product",
+            "otherEntityRelationshipName": "factory",
+            "relationshipName": "product"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "order",
+            "otherEntityRelationshipName": "factory",
+            "relationshipName": "order"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "kpi",
+            "otherEntityRelationshipName": "factory",
+            "relationshipName": "kpi"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "alarm",
+            "otherEntityRelationshipName": "factory",
+            "relationshipName": "alarm"
+        }
+    ],
+    "changelogDate": "20200320025400",
+    "entityTableName": "factory",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}
